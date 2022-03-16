@@ -1,0 +1,85 @@
+{
+    "instruction_set": [{
+        "description": "Testcase 01 :User Registration",
+        "validations": [{
+                "object_notation": "COMMAND",
+                "operator": "contains",
+                "expected_value": "Navigate"
+            },
+            {
+                "object_notation": "COMMAND",
+                "operator": "contains",
+                "expected_value": "/register"
+            }
+        ],
+        "error_out": "Testcase01: ensure that the url /register is visited",
+        "is_enabled": true,
+        "hint":"Ensure that the register page is visited to perform registration"
+    },
+    {
+        "description": "Testcase 01 :User Registration",
+        "validations": [{
+                "object_notation": "COMMAND",
+                "operator": "contains",
+                "expected_value": "abc@123"
+            }
+        ],
+        "error_out": "Testcase01: Ensure that the password is entered in the register page ",
+        "is_enabled": true,
+        "hint":"is the password abc@123 being entered during the registration process? "
+    },
+    {
+        "description": "Testcase 01 :User Registration and Login",
+        "validations": [{
+                "object_notation": "COMMAND",
+                "operator": "contains",
+                "expected_value": "abc@123"
+            }
+        ],
+        "error_out": "Testcase01: unable to detect password entry abc@123",
+        "is_enabled": true,
+        "hint":"is the password abc@123 being entered during the registration process? "
+    },
+    {
+        "description": "Testcase 01 :User Registration and Login",
+        "validations": [{
+                "object_notation": "COMMAND",
+                "operator": "contains",
+                "expected_value": "abc@123"
+            }
+        ],
+        "error_out": "Testcase01: unable to detect password entry abc@123 for confirm password",
+        "is_enabled": true, 
+        "hint":"is the password abc@123 being entered during the registration process for confirm password ? "
+    },
+    {
+        "description": "Testcase 01 :User Registration and Login",
+        "validations": [{
+            "object_notation": "COMMAND",
+            "operator": "contains",
+            "expected_value": "GetUrl"
+        },
+        {
+            "object_notation": "RESPONSE",
+            "operator": "contains",
+            "expected_value": "/login"
+        }
+        ],
+        "error_out": "Testcase01: Verify that the user is taken to the login page after registration: validation missing",
+        "is_enabled": true, 
+        "hint":"Are we checking if the url changes to /login after performing a registration?  "
+    },
+    {
+        "description": "Testcase 02 :Re-registration",
+        "validations": [{
+                "object_notation": "RESPONSE",
+                "operator": "contains",
+                "expected_value": "/register"
+            }
+        ],
+        "error_out": "Testcase02: No check to ensure that the re-registarion was blocked",
+        "is_enabled": true, 
+        "hint":"After re-registration, was the url validated to see if it stayed on the /regsiter page only ?"
+    }
+]
+}
