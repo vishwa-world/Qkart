@@ -80,6 +80,9 @@ def assert_logs(chrome_logs, assesment_instruction_file):
         "success":0,
         "failure":0
     }
+    final_output={
+
+    }
     if(chrome_logs is None):
         print("assesment ERROR: Unable to detect Logs")
         return
@@ -92,6 +95,7 @@ def assert_logs(chrome_logs, assesment_instruction_file):
     Logs = logProvider(chrome_logs)
 
     for instruction in assesment_instructions:
+        final_output[instruction['description']]="TEST_STATUS_FAILURE"
         if(instruction.get('is_enabled')):
             while True:
                 log_item =Logs.get_next_log_statement()
@@ -106,9 +110,13 @@ def assert_logs(chrome_logs, assesment_instruction_file):
                 if(status):
                     Logs.set_success_node_index()
                     overall_status['success']=overall_status['success']+1
+                    final_output[instruction['description']]="TEST_STATUS_SUCCESS"
                     break
+        else:
+            final_output[instruction['description']]="TEST_STATUS_SKIPPED"
     print("*"*100)
     print("\nAssessment status : \n Success: {0} \n Failure = {1} \n Total = {2}".format(str(overall_status['success']), str(overall_status['failure']), str(overall_status['success']+overall_status["failure"])))
+    json.dump(final_output,open("assesment_result.json",'w+'))
 
 if __name__ == "__main__":
     
