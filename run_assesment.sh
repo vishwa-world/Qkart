@@ -1,1 +1,1 @@
-python assesment/localAssesment.py ./app/chromedriver.log assesment/AIS_MO_01.json
+python3 assesment/localAssesment.py ./app/chromedriver.log assesment/AIS_MO_01.json

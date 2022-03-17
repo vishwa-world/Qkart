@@ -1,6 +1,6 @@
 {
     "instruction_set": [{
-        "description": "Testcase 01 :User Registration",
+        "description": "Testcase 01 :User Registration: ensure register page is opened",
         "validations": [{
                 "object_notation": "COMMAND",
                 "operator": "contains",
@@ -17,7 +17,7 @@
         "hint":"Ensure that the register page is visited to perform registration"
     },
     {
-        "description": "Testcase 01 :User Registration",
+        "description": "Testcase 01 :User Registration: Ensure that the password is entered",
         "validations": [{
                 "object_notation": "COMMAND",
                 "operator": "contains",
@@ -29,7 +29,7 @@
         "hint":"is the password abc@123 being entered during the registration process? "
     },
     {
-        "description": "Testcase 01 :User Registration and Login",
+        "description": "Testcase 01 :User Registration :Verify that confirm password is entered",
         "validations": [{
                 "object_notation": "COMMAND",
                 "operator": "contains",
@@ -38,19 +38,7 @@
         ],
         "error_out": "Testcase01: unable to detect password entry abc@123",
         "is_enabled": true,
-        "hint":"is the password abc@123 being entered during the registration process? "
-    },
-    {
-        "description": "Testcase 01 :User Registration and Login",
-        "validations": [{
-                "object_notation": "COMMAND",
-                "operator": "contains",
-                "expected_value": "abc@123"
-            }
-        ],
-        "error_out": "Testcase01: unable to detect password entry abc@123 for confirm password",
-        "is_enabled": true, 
-        "hint":"is the password abc@123 being entered during the registration process for confirm password ? "
+        "hint":"is the confirm password abc@123 being entered during the registration process? "
     },
     {
         "description": "Testcase 01 :User Registration and Login",
