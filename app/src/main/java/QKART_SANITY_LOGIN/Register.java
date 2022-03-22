@@ -5,13 +5,14 @@ import java.sql.Timestamp;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class Register {
-    ChromeDriver driver;
+    RemoteWebDriver driver;
     String url = "https://crio-qkart-frontend-qa.vercel.app/register";
     String lastGeneratedUsername = "";
 
-    public Register(ChromeDriver driver) {
+    public Register(RemoteWebDriver driver) {
         this.driver = driver;
     }
 
@@ -48,7 +49,8 @@ public class Register {
         password_txt_box.sendKeys(test_data_password);
 
         // Find the Confirm password text box
-         WebElement confirm_password_txt_box = this.driver.findElement(By.id("password"));
+         WebElement confirm_password_txt_box =
+         this.driver.findElement(By.id("password"));
 
         // Enter the Confirm Password Value
         confirm_password_txt_box.sendKeys(test_data_password);
