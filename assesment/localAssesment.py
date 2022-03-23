@@ -1,7 +1,7 @@
 import json
 import sys
 
-from sqlalchemy import over
+# from sqlalchemy import over
 
 
 def construct_log_json(log_text):
@@ -119,10 +119,8 @@ def assert_logs(chrome_logs, assesment_instruction_file):
     json.dump(final_output,open("assesment_result.json",'w+'))
 
 if __name__ == "__main__":
-    
-    chromedriverlog_path = sys.argv[1] 
+    filtered_json_path = sys.argv[1] 
     assessment_instruction_file = sys.argv[2]
-    chrome_logs = construct_log_json(chromedriverlog_path)
-    assert_logs(chrome_logs , assessment_instruction_file)
 
-    
+    filtered_logs_json = json.load(open('filtered_logs.json','r'))
+    assert_logs(filtered_logs_json , assessment_instruction_file)
