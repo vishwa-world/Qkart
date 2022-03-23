@@ -23,7 +23,7 @@ def get_log_data(log_file_url):
         return None
 
 def construct_log_json(log_text):
-    tmp= open('temp.txt','w+')
+    tmp= open('app/chromedriver.log','w+')
     tmp.write(log_text)
     tmp.close()
     LOG= {
@@ -156,4 +156,3 @@ if __name__ == "__main__":
     filtered_logs = extract_latest_chromeDriverLogs(IP)
     print("Logs saved to: filtered_logs.json")
     assert_logs(filtered_logs , assessment_instruction_file)
-
