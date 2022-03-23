@@ -32,7 +32,7 @@ def construct_log_json(log_text):
     log_frame=""
     log_object_frame={"COMMAND":None, "RESPONSE":None}
     selector = None
-    for line in open("temp.txt"):
+    for line in open("app/chromedriver.log"):
         if('[INFO]' in line and 'COMMAND' in line ):
             LOG["actions"].append(log_object_frame)
             selector = "COMMAND"
