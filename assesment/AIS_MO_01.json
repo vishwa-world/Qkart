@@ -1,6 +1,6 @@
 {
   "instruction_set": [
-    // CRIO_SOLUTION_AND_STUB_ONLY_START_MODULE_DEBUGGING
+    # CRIO_SOLUTION_AND_STUB_ONLY_START_MODULE_DEBUGGING
     {
       "description": "Testcase 01: Ensure register page is opened",
       "validations": [
@@ -76,8 +76,8 @@
       "is_enabled": true,
       "hint": "After re-registration, was the url validated to see if it stayed on the /register page only?"
     }
-    // CRIO_SOLUTION_AND_STUB_ONLY_END_MODULE_DEBUGGING
-    // CRIO_SOLUTION_AND_STUB_ONLY_START_MODULE_TEST_AUTOMATION
+    # CRIO_SOLUTION_AND_STUB_ONLY_END_MODULE_DEBUGGING
+    # CRIO_SOLUTION_AND_STUB_ONLY_START_MODULE_TEST_AUTOMATION
     {
       "description": "Testcase 01: Ensure register page is opened",
       "validations": [
@@ -309,6 +309,6 @@
       "is_enabled": true,
       "hint": "Are we validating the error message if the text is: You do not have enough balance in your wallet for this purchase "
     }
-    // CRIO_SOLUTION_AND_STUB_ONLY_END_MODULE_TEST_AUTOMATION
+    # CRIO_SOLUTION_AND_STUB_ONLY_END_MODULE_TEST_AUTOMATION
   ]
 }
