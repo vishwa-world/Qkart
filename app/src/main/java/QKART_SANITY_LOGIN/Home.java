@@ -28,6 +28,7 @@ public class Home {
             WebElement logout_button = driver.findElement(By.className("MuiButton-text"));
             logout_button.click();
 
+            // SLEEP_STMT_10: Wait for Logout to complete
             // Wait for Logout to Complete
             Thread.sleep(3000);
 
@@ -112,7 +113,6 @@ public class Home {
         }
     }
 
- 
     /*
      * Return Boolean denoting the status of change quantity of product in cart
      * operation
@@ -132,7 +132,7 @@ public class Home {
         }
     }
 
-   /*
+    /*
      * Return Boolean denoting if the cart contains items as expected
      */
     public Boolean verifyCartContents(List<String> expectedCartContents) {
