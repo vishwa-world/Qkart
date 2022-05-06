@@ -61,6 +61,7 @@ public class Register {
         register_now_button.click();
 
 
+
         this.lastGeneratedUsername = test_data_username;
 
         return this.driver.getCurrentUrl().endsWith("/login");
