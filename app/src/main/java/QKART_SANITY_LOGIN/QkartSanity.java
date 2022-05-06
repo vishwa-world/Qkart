@@ -3,12 +3,19 @@
  */
 package QKART_SANITY_LOGIN;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -34,6 +41,17 @@ public class QkartSanity {
                 message, status));
     }
 
+    public static void takeScreenshot(WebDriver driver, String screenshotType, String description) {
+        /*
+         * 1. Check if the folder "/screenshots" exists, create if it doesn't
+         * 2. Generate a unique string using the timestamp
+         * 3. Capture screenshot
+         * 4. Save the screenshot inside the "/screenshots" folder using the following
+         * naming convention: screenshot_<Timestamp>_<ScreenshotType>_<Description>.png
+         * eg: screenshot_2022-03-05T06:59:46.015489_StartTestcase_Testcase01.png
+         */
+    }
+
     /*
      * Testcase01: Verify the functionality of Login button on the Home page
      */
@@ -41,7 +59,6 @@ public class QkartSanity {
         Boolean status;
         logStatus("Start TestCase", "Test Case 1: Verify User Registration", "DONE");
 
-        // Visit the Registration page and register a new user
         Register registration = new Register(driver);
         registration.navigateToRegisterPage();
         status = registration.registerUser("testUser", "abc@123", true);
@@ -118,7 +135,7 @@ public class QkartSanity {
         Home homePage = new Home(driver);
         homePage.navigateToHome();
 
-        // Wait for Page to load
+        // SLEEP_STMT_01 : Wait for Page to Load
         Thread.sleep(5000);
 
         // Search for the "yonex" product
@@ -151,6 +168,7 @@ public class QkartSanity {
         }
 
         logStatus("Step Success", "Successfully validated the search results ", "PASS");
+        // SLEEP_STMT_02
         Thread.sleep(2000);
 
         // Search for product
@@ -187,7 +205,8 @@ public class QkartSanity {
         // Visit home page
         Home homePage = new Home(driver);
         homePage.navigateToHome();
-        // Wait for Page to load
+
+        // SLEEP_STMT_03 : Wait for page to load
         Thread.sleep(5000);
 
         // Search for product and get card content element of search results
@@ -291,6 +310,7 @@ public class QkartSanity {
 
         // Place the order
         checkoutPage.placeOrder();
+        // SLEEP_STMT_04: Wait for place order to succeed and navigate to Thanks page
         Thread.sleep(3000);
 
         // Check if placing order redirected to the Thansk page
@@ -441,6 +461,27 @@ public class QkartSanity {
         return status;
     }
 
+    public static Boolean TestCase09(RemoteWebDriver driver) throws InterruptedException {
+        Boolean status = false;
+
+        return status;
+    }
+
+    public static Boolean TestCase10(RemoteWebDriver driver) throws InterruptedException {
+        Boolean status = false;
+        return status;
+    }
+
+    public static Boolean TestCase11(RemoteWebDriver driver) throws InterruptedException {
+        Boolean status = false;
+        return status;
+    }
+
+    public static Boolean TestCase12(RemoteWebDriver driver) throws InterruptedException {
+        Boolean status = false;
+        return status;
+    }
+
     public static void main(String[] args) throws InterruptedException, MalformedURLException {
         int totalTests = 0;
         int passedTests = 0;
@@ -465,6 +506,14 @@ public class QkartSanity {
             }
 
             System.out.println("");
+
+
+
+
+
+
+
+
 
 
 

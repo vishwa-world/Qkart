@@ -1,4 +1,5 @@
-# docker installatiomn
+# docker installation
+sudo apt-get update
 sudo apt-get -y install docker.io
 
 # pull selenium and zalenium docker images
