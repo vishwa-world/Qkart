@@ -20,6 +20,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class QkartSanity {
 
@@ -568,7 +570,7 @@ public class QkartSanity {
             // }
 
             // System.out.println("");
-            
+
             // Execute Test Case 9
             // totalTests += 1;
             // status = TestCase09(driver);
