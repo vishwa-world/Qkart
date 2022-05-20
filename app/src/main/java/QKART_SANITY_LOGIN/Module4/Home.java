@@ -52,8 +52,9 @@ public class Home {
             searchBox.clear();
             searchBox.sendKeys(product);
 
-            WebDriverWait wait = new WebDriverWait(driver, 30);
-            wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(String.format("//div[@class='MuiCardContent-root css-1qw96cp'][1]/p[contains(text(),'%s')]",product))));
+            WebDriverWait wait = new WebDriverWait(driver,30);
+            wait.until(ExpectedConditions.or(ExpectedConditions.textToBePresentInElementLocated(By.className("css-yg30ev6"), product),
+            ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"root\"]/div/div[3]/div[1]/div[2]/div/h4"))));
             return true;
         } catch (Exception e) {
             System.out.println("Error while searching for a product: " + e.getMessage());
