@@ -158,16 +158,11 @@ public class Home {
                         if (currentQty < quantity) {
                             item.findElements(By.tagName("button")).get(1).click();
                          
-                            WebDriverWait wait = new WebDriverWait(driver, 30);
-                            wait.until(ExpectedConditions.textToBePresentInElement(
-                                    item.findElements(By.tagName("button")).get(1), String.valueOf(currentQty + 1)));
                         } else {
                             item.findElements(By.tagName("button")).get(0).click();
-                        
-                            WebDriverWait wait = new WebDriverWait(driver, 30);
-                            wait.until(ExpectedConditions.textToBePresentInElement(
-                                    item.findElements(By.tagName("button")).get(1), String.valueOf(currentQty - 1)));
                         }
+                        
+                        synchronized (driver){driver.wait(2000);}
 
                         currentQty = Integer
                                 .valueOf(item.findElement(By.xpath("//div[@data-testid=\"item-qty\"]")).getText());
