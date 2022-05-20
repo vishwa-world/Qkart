@@ -161,8 +161,10 @@ public class Home {
                         } else {
                             item.findElements(By.tagName("button")).get(0).click();
                         }
-                        
-                        synchronized (driver){driver.wait(2000);}
+
+                        synchronized (driver){
+                            driver.wait(2000);
+                        }
 
                         currentQty = Integer
                                 .valueOf(item.findElement(By.xpath("//div[@data-testid=\"item-qty\"]")).getText());
