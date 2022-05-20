@@ -35,7 +35,7 @@ public class SearchResult {
      */
     public Boolean openSizechart() {
         try {
-
+            // Find the link of size chart in the parentElement and click on it
             WebElement element = parentElement.findElement(By.tagName("button"));
             element.click();
 
@@ -57,6 +57,7 @@ public class SearchResult {
             
             Actions action = new Actions(driver);
 
+            // Clicking on "ESC" key closes the size chart modal
             action.sendKeys(Keys.ESCAPE);
             action.perform();
 
@@ -111,6 +112,7 @@ public class SearchResult {
             WebElement tableElement = sizeChartParent.findElement(By.tagName("table"));
             List<WebElement> tableHeader = tableElement.findElement(By.tagName("thead")).findElements(By.tagName("th"));
 
+            // Check table headers match
             String tempHeaderValue;
             for (int i = 0; i < expectedTableHeaders.size(); i++) {
                 tempHeaderValue = tableHeader.get(i).getText();
@@ -125,6 +127,7 @@ public class SearchResult {
             List<WebElement> tableBodyRows = tableElement.findElement(By.tagName("tbody"))
                     .findElements(By.tagName("tr"));
 
+            // Check table body match
             List<WebElement> tempBodyRow;
             for (int i = 0; i < expectedTableBody.size(); i++) {
                 tempBodyRow = tableBodyRows.get(i).findElements(By.tagName("td"));
@@ -153,6 +156,7 @@ public class SearchResult {
     public Boolean verifyExistenceofSizeDropdown(WebDriver driver) {
         Boolean status = false;
         try {
+            // If the size dropdown exists and is displayed return true, else return false
             WebElement element = driver.findElement(By.className("css-13sljp9"));
             status = element.isDisplayed();
             return status;
