@@ -62,9 +62,10 @@ public class Register {
 
         try {
             WebDriverWait wait = new WebDriverWait(driver, 30);
-            wait.until(ExpectedConditions.urlToBe("https://crio-qkart-frontend-qa.vercel.app/login"));
+            wait.until(ExpectedConditions.or(
+                ExpectedConditions.urlToBe("https://crio-qkart-frontend-qa.vercel.app/login")));
         } catch (TimeoutException e) {
-            System.out.println("Error while logging in: " + e.getMessage());
+            System.out.println("Error while registering: " + e.getMessage());
             return false;
         }
 
