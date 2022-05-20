@@ -23,5 +23,3 @@ gradle/** merge=copy-merge
 
 # app/
 app/build.gradle merge=copy-merge
-app/src/main/java/QKART_SANITY_LOGIN/QkartSanity.java merge=copy-merge
-

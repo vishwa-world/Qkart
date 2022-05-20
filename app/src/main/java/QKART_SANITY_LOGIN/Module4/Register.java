@@ -3,6 +3,7 @@ package QKART_SANITY_LOGIN.Module4;
 import java.sql.Timestamp;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -59,8 +60,13 @@ public class Register {
         // Click the register now button
         register_now_button.click();
 
-        WebDriverWait wait = new WebDriverWait(driver, 30);
-        wait.until(ExpectedConditions.urlToBe("https://crio-qkart-frontend-qa.vercel.app/login"));
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, 30);
+            wait.until(ExpectedConditions.urlToBe("https://crio-qkart-frontend-qa.vercel.app/login"));
+        } catch (TimeoutException e) {
+            System.out.println("Error while logging in: " + e.getMessage());
+            return false;
+        }
 
         this.lastGeneratedUsername = test_data_username;
 
