@@ -24,16 +24,4 @@ gradle/** merge=copy-merge
 # app/
 app/build.gradle merge=copy-merge
 
-
-app/src/main/java/QKART_SANITY_LOGIN/QkartSanity.java merge=ours
-app/src/main/java/QKART_SANITY_LOGIN/Checkout.java merge=ours
-app/src/main/java/QKART_SANITY_LOGIN/Home.java merge=ours
-app/src/main/java/QKART_SANITY_LOGIN/Login.java merge=ours
-app/src/main/java/QKART_SANITY_LOGIN/Register.java merge=ours
-app/src/main/java/QKART_SANITY_LOGIN/SearchResult.java merge=ours
-
-app/src/main/java/QKART_SANITY_LOGIN/Module1/Checkout.java merge=ours
-app/src/main/java/QKART_SANITY_LOGIN/Module1/Home.java merge=ours
-app/src/main/java/QKART_SANITY_LOGIN/Module1/Login.java merge=ours
-app/src/main/java/QKART_SANITY_LOGIN/Module1/Register.java merge=ours
-app/src/main/java/QKART_SANITY_LOGIN/Module1/SearchResult.java merge=ours
+app/src/main/java/QKART_SANITY_LOGIN/QkartSanity.java merge=copy-merge
