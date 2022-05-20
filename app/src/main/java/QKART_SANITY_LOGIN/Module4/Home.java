@@ -43,7 +43,7 @@ public class Home {
      * Returns Boolean if searching for the given product name occurs without any
      * errors
      */
-    // TODO: CRIO_TASK_MODULE_XPATH - M1_1 Update Xpath to fix the error
+    // TODO: CRIO_TASK_MODULE_XPATH - M1_1 Update locator using Dynamic Xpath to fix the error
     public Boolean searchForProduct(String product) {
         try {
             // Clear the contents of the search box and Enter the product name in the search
