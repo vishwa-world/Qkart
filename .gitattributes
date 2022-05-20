@@ -1,6 +1,11 @@
 # Root folder
 .gitattributes merge=copy-merge
 .gitignore merge=copy-merge
+run_assesment.sh merge=copy-merge
+.run_platform_assesment.sh merge=copy-merge
+.selenium-run.sh merge=copy-merge
+.selenium-setup.sh merge=copy-merge
+settings.gradle merge=copy-merge
 
 # __CRIO__
 __CRIO__/metadata.json merge=copy-merge
@@ -18,3 +23,11 @@ gradle/** merge=copy-merge
 
 # app/
 app/build.gradle merge=copy-merge
+
+
+app/src/main/java/QKART_SANITY_LOGIN/QkartSanity.java merge=ours
+app/src/main/java/QKART_SANITY_LOGIN/Checkout.java merge=ours
+app/src/main/java/QKART_SANITY_LOGIN/Home.java merge=ours
+app/src/main/java/QKART_SANITY_LOGIN/Login.java merge=ours
+app/src/main/java/QKART_SANITY_LOGIN/Register.java merge=ours
+app/src/main/java/QKART_SANITY_LOGIN/SearchResult.java merge=ours
