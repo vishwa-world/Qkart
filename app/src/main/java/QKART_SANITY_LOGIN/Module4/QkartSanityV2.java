@@ -146,7 +146,7 @@ public class QkartSanityV2 {
         homePage.navigateToHome();
 
         // Search for the "yonex" product
-        status = homePage.searchForProduct("yonex");
+        status = homePage.searchForProduct("YONEX");
         if (!status) {
             logStatus("TestCase 3", "Test Case Failure. Unable to search for given product", "FAIL");
             return false;
@@ -297,7 +297,7 @@ public class QkartSanityV2 {
         homePage.navigateToHome();
 
         // Find required products by searching and add them to the user's cart
-        status = homePage.searchForProduct("Yonex");
+        status = homePage.searchForProduct("YONEX");
         homePage.addProductToCart("YONEX Smash Badminton Racquet");
         status = homePage.searchForProduct("Tan");
         homePage.addProductToCart("Tan Leatherette Weekender Duffle");
@@ -402,7 +402,7 @@ public class QkartSanityV2 {
      */
     public static Boolean TestCase07(RemoteWebDriver driver) throws InterruptedException {
         Boolean status = false;
-        List<String> expectedResult = Arrays.asList("Stylecon 9 Seater RHS Sofa Set",
+        List<String> expectedResult = Arrays.asList("Stylecon 9 Seater RHS Sofa Set ",
                 "Xtend Smart Watch");
 
         logStatus("Start TestCase", "Test Case 7: Verify that cart contents are persisted after logout", "DONE");
@@ -432,7 +432,7 @@ public class QkartSanityV2 {
 
         homePage.navigateToHome();
         status = homePage.searchForProduct("Stylecon");
-        homePage.addProductToCart("Stylecon 9 Seater RHS Sofa Set");
+        homePage.addProductToCart("Stylecon 9 Seater RHS Sofa Set ");
 
         status = homePage.searchForProduct("Xtend");
         homePage.addProductToCart("Xtend Smart Watch");
@@ -483,9 +483,9 @@ public class QkartSanityV2 {
         Home homePage = new Home(driver);
         homePage.navigateToHome();
         status = homePage.searchForProduct("Stylecon");
-        homePage.addProductToCart("Stylecon 9 Seater RHS Sofa Set");
+        homePage.addProductToCart("Stylecon 9 Seater RHS Sofa Set ");
 
-        homePage.changeProductQuantityinCart("Stylecon 9 Seater RHS Sofa Set", 10);
+        homePage.changeProductQuantityinCart("Stylecon 9 Seater RHS Sofa Set ", 10);
 
         homePage.clickCheckout();
 
