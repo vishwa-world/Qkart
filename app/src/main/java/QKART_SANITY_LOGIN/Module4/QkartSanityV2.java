@@ -312,7 +312,7 @@ public class QkartSanityV2 {
 
         // Place the order
         checkoutPage.placeOrder();
-   
+
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.urlToBe("https://crio-qkart-frontend-qa.vercel.app/thanks"));
 
@@ -387,7 +387,7 @@ public class QkartSanityV2 {
             System.out.println("Error while logging in: " + e.getMessage());
             return false;
         }
-        
+
         status = driver.getCurrentUrl().endsWith("/thanks");
 
         homePage.navigateToHome();
@@ -618,6 +618,12 @@ public class QkartSanityV2 {
 
     public static Boolean TestCase11(RemoteWebDriver driver) throws InterruptedException {
         Boolean status = false;
+
+        logStatus("Start TestCase",
+                "Test Case 11: Verify that contact us option is working correctly ",
+                "DONE");
+        takeScreenshot(driver, "StartTestCase", "TestCase11");
+
         Home homePage = new Home(driver);
         homePage.navigateToHome();
 
@@ -634,6 +640,16 @@ public class QkartSanityV2 {
                 By.xpath("/html/body/div[2]/div[3]/div/section/div/div/div/form/div/div/div[4]/div/button"));
 
         contactUs.click();
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.invisibilityOf(contactUs));
+
+        logStatus("End TestCase",
+                "Test Case 11: Verify that contact us option is working correctly ",
+                "DONE");
+
+        takeScreenshot(driver, "EndTestCase", "TestCase11");
+
         return status;
     }
 
@@ -744,7 +760,7 @@ public class QkartSanityV2 {
             totalTests += 1;
             status = TestCase03(driver);
             if (status) {
-            passedTests += 1;
+                passedTests += 1;
             }
 
             System.out.println("");
@@ -753,7 +769,7 @@ public class QkartSanityV2 {
             totalTests += 1;
             status = TestCase04(driver);
             if (status) {
-            passedTests += 1;
+                passedTests += 1;
             }
 
             System.out.println("");
@@ -762,7 +778,7 @@ public class QkartSanityV2 {
             totalTests += 1;
             status = TestCase05(driver);
             if (status) {
-            passedTests += 1;
+                passedTests += 1;
             }
 
             System.out.println("");
@@ -771,7 +787,7 @@ public class QkartSanityV2 {
             totalTests += 1;
             status = TestCase06(driver);
             if (status) {
-            passedTests += 1;
+                passedTests += 1;
             }
 
             System.out.println("");
@@ -780,7 +796,7 @@ public class QkartSanityV2 {
             totalTests += 1;
             status = TestCase07(driver);
             if (status) {
-            passedTests += 1;
+                passedTests += 1;
             }
 
             System.out.println("");
@@ -789,7 +805,7 @@ public class QkartSanityV2 {
             totalTests += 1;
             status = TestCase08(driver);
             if (status) {
-            passedTests += 1;
+                passedTests += 1;
             }
 
             System.out.println("");
@@ -798,7 +814,7 @@ public class QkartSanityV2 {
             totalTests += 1;
             status = TestCase09(driver);
             if (status) {
-            passedTests += 1;
+                passedTests += 1;
             }
 
             System.out.println("");
@@ -807,7 +823,7 @@ public class QkartSanityV2 {
             totalTests += 1;
             status = TestCase10(driver);
             if (status) {
-            passedTests += 1;
+                passedTests += 1;
             }
 
             System.out.println("");
@@ -816,7 +832,7 @@ public class QkartSanityV2 {
             totalTests += 1;
             status = TestCase11(driver);
             if (status) {
-            passedTests += 1;
+                passedTests += 1;
             }
 
             System.out.println("");
@@ -825,7 +841,7 @@ public class QkartSanityV2 {
             totalTests += 1;
             status = TestCase12(driver);
             if (status) {
-            passedTests += 1;
+                passedTests += 1;
             }
 
             System.out.println("");
