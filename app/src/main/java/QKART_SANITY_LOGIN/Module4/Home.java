@@ -57,7 +57,7 @@ public class Home {
             ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"root\"]/div/div[3]/div[1]/div[2]/div/h4"))));
             return true;
         } catch (Exception e) {
-            System.out.println("Error while searching for a product: " + e.getMessage());
+            // System.out.println("Error while searching for a product: " + e.getMessage());
             return false;
         }
     }
@@ -111,7 +111,7 @@ public class Home {
              */
             List<WebElement> gridContent = driver.findElementsByClassName("css-sycj1h");
             for (WebElement cell : gridContent) {
-                if (cell.findElement(By.className("css-yg30e6")).getText().equals(productName)) {
+                if (productName.contains(cell.findElement(By.className("css-yg30e6")).getText())) {
                     cell.findElement(By.tagName("button")).click();
 
                     WebDriverWait wait = new WebDriverWait(driver, 30);
@@ -168,7 +168,7 @@ public class Home {
             int currentQty;
             for (WebElement item : cartContents) {
                 // Find the matching product from the cart items
-                if (item.findElement(By.className("css-1gjj37g")).getText().contains(productName)) {
+                if (productName.contains(item.findElement(By.xpath("//*[@class='MuiBox-root css-1gjj37g']/div[1]")).getText())) {
                     currentQty = Integer.valueOf(item.findElement(By.className("css-olyig7")).getText());
 
                     // Click on the + or - buttons appropriately to set the correct quantity of the
