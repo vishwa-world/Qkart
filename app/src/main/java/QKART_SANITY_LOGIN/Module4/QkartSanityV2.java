@@ -382,7 +382,7 @@ public class QkartSanityV2 {
 
         try {
             WebDriverWait wait = new WebDriverWait(driver, 30);
-            wait.until(ExpectedConditions.urlToBe("https://crio-qkart-frontend-qa.vercel.app/login"));
+            wait.until(ExpectedConditions.urlToBe("https://crio-qkart-frontend-qa.vercel.app/thanks"));
         } catch (TimeoutException e) {
             System.out.println("Error while logging in: " + e.getMessage());
             return false;
