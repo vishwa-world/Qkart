@@ -241,6 +241,7 @@ public class QkartSanityV2 {
                         logStatus("Step Success", "Successfully validated contents of Size Chart Link", "PASS");
                     } else {
                         logStatus("Step Failure", "Failure while validating contents of Size Chart Link", "FAIL");
+                        status = false;
                     }
 
                     // Close the size chart modal
@@ -256,7 +257,7 @@ public class QkartSanityV2 {
                 return false;
             }
         }
-        logStatus("TestCase 4", "Test Case PASS. Validated Size Chart Details", "PASS");
+        logStatus("TestCase 4", "End Test Case: Validated Size Chart Details", status ? "PASS" : "FAIL");
         return status;
     }
 
@@ -556,6 +557,12 @@ public class QkartSanityV2 {
         driver.close();
 
         driver.switchTo().window(handles.toArray(new String[handles.size()])[0]);
+
+        logStatus("End TestCase",
+        "Test Case 9: Verify that product added to cart is available when a new tab is opened",
+        status ? "PASS" : "FAIL");
+        takeScreenshot(driver, "StartTestCase", "TestCase09");
+
         return status;
     }
 
@@ -574,7 +581,7 @@ public class QkartSanityV2 {
             logStatus("TestCase 10",
                     "Test Case Failure.  Verify that the Privacy Policy, About Us are displayed correctly ",
                     "FAIL");
-            takeScreenshot(driver, "Failure", "TestCase06");
+            takeScreenshot(driver, "Failure", "TestCase10");
         }
         lastGeneratedUserName = registration.lastGeneratedUsername;
 
@@ -583,7 +590,7 @@ public class QkartSanityV2 {
         status = login.PerformLogin(lastGeneratedUserName, "abc@123");
         if (!status) {
             logStatus("Step Failure", "User Perform Login Failed", status ? "PASS" : "FAIL");
-            takeScreenshot(driver, "Failure", "TestCase08");
+            takeScreenshot(driver, "Failure", "TestCase10");
             logStatus("End TestCase",
                     "Test Case 10:    Verify that the Privacy Policy, About Us are displayed correctly ",
                     status ? "PASS" : "FAIL");
@@ -595,12 +602,27 @@ public class QkartSanityV2 {
         String basePageURL = driver.getCurrentUrl();
 
         driver.findElement(By.linkText("Privacy policy")).click();
-        assert (driver.getCurrentUrl().equals(basePageURL));
+        status = driver.getCurrentUrl().equals(basePageURL);
+
+        if (!status) {
+            logStatus("Step Failure", "Verifying parent page url didn't change on privacy policy link click failed", status ? "PASS" : "FAIL");
+            takeScreenshot(driver, "Failure", "TestCase10");
+            logStatus("End TestCase",
+                    "Test Case 10: Verify that the Privacy Policy, About Us are displayed correctly ",
+                    status ? "PASS" : "FAIL");
+        }
 
         Set<String> handles = driver.getWindowHandles();
         driver.switchTo().window(handles.toArray(new String[handles.size()])[1]);
         WebElement PrivacyPolicyHeading = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/h2"));
-        assert (PrivacyPolicyHeading.getText().equals("Privacy Policy"));
+        status = PrivacyPolicyHeading.getText().equals("Privacy Policy");
+        if (!status) {
+            logStatus("Step Failure", "Verifying new tab opened has Privacy Policy page heading failed", status ? "PASS" : "FAIL");
+            takeScreenshot(driver, "Failure", "TestCase10");
+            logStatus("End TestCase",
+                    "Test Case 10: Verify that the Privacy Policy, About Us are displayed correctly ",
+                    status ? "PASS" : "FAIL");
+        }
 
         driver.switchTo().window(handles.toArray(new String[handles.size()])[0]);
         driver.findElement(By.linkText("Terms of Service")).click();
@@ -608,11 +630,24 @@ public class QkartSanityV2 {
         handles = driver.getWindowHandles();
         driver.switchTo().window(handles.toArray(new String[handles.size()])[2]);
         WebElement TOSHeading = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/h2"));
-        assert (TOSHeading.getText().equals("Terms of Service"));
+        status = TOSHeading.getText().equals("Terms of Service");
+        if (!status) {
+            logStatus("Step Failure", "Verifying new tab opened has Terms Of Service page heading failed", status ? "PASS" : "FAIL");
+            takeScreenshot(driver, "Failure", "TestCase10");
+            logStatus("End TestCase",
+                    "Test Case 10: Verify that the Privacy Policy, About Us are displayed correctly ",
+                    status ? "PASS" : "FAIL");
+        }
 
         driver.close();
         driver.switchTo().window(handles.toArray(new String[handles.size()])[1]).close();
         driver.switchTo().window(handles.toArray(new String[handles.size()])[0]);
+
+        logStatus("Start TestCase",
+        "Test Case 10: Verify that the Privacy Policy, About Us are displayed correctly ",
+        "DONE");
+        takeScreenshot(driver, "EndTestCase", "TestCase10");
+
         return status;
     }
 
@@ -646,7 +681,7 @@ public class QkartSanityV2 {
 
         logStatus("End TestCase",
                 "Test Case 11: Verify that contact us option is working correctly ",
-                "DONE");
+                "PASS");
 
         takeScreenshot(driver, "EndTestCase", "TestCase11");
 

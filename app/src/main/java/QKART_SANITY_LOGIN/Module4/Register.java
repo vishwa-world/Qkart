@@ -65,7 +65,7 @@ public class Register {
             wait.until(ExpectedConditions.or(
                 ExpectedConditions.urlToBe("https://crio-qkart-frontend-qa.vercel.app/login")));
         } catch (TimeoutException e) {
-            System.out.println("Error while registering: " + e.getMessage());
+            // System.out.println("Error while registering: " + e.getMessage());
             return false;
         }
 
