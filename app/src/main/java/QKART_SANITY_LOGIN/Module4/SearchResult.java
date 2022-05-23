@@ -38,6 +38,7 @@ public class SearchResult {
             WebElement element = parentElement.findElement(By.tagName("button"));
             element.click();
 
+            Thread.sleep(3000);
             return true;
         } catch (Exception e) {
             System.out.println("Exception while opening Size chart: " + e.getMessage());
