@@ -178,8 +178,8 @@ public class QkartSanityV2 {
 
         // Search for product
         status = homePage.searchForProduct("Gesundheit");
-        if (!status) {
-            logStatus("TestCase 3", "Test Case Failure. Unable to search for given product", "FAIL");
+        if (status) {
+            logStatus("TestCase 3", "Test Case Failure. Invalid keyword returned results", "FAIL");
             return false;
         }
 
@@ -643,9 +643,9 @@ public class QkartSanityV2 {
         driver.switchTo().window(handles.toArray(new String[handles.size()])[1]).close();
         driver.switchTo().window(handles.toArray(new String[handles.size()])[0]);
 
-        logStatus("Start TestCase",
+        logStatus("End TestCase",
         "Test Case 10: Verify that the Privacy Policy, About Us are displayed correctly ",
-        "DONE");
+        "PASS");
         takeScreenshot(driver, "EndTestCase", "TestCase10");
 
         return status;
