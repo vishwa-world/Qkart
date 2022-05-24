@@ -652,8 +652,6 @@ public class QkartSanityV2 {
     }
 
     public static Boolean TestCase11(RemoteWebDriver driver) throws InterruptedException {
-        Boolean status = false;
-
         logStatus("Start TestCase",
                 "Test Case 11: Verify that contact us option is working correctly ",
                 "DONE");
@@ -685,7 +683,7 @@ public class QkartSanityV2 {
 
         takeScreenshot(driver, "EndTestCase", "TestCase11");
 
-        return status;
+        return true;
     }
 
     public static Boolean TestCase12(RemoteWebDriver driver) throws InterruptedException {
