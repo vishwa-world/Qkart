@@ -55,9 +55,9 @@ public class Home {
             WebDriverWait wait = new WebDriverWait(driver,30);
             wait.until(ExpectedConditions.or(ExpectedConditions.textToBePresentInElementLocated(By.className("css-yg30ev6"), product),
             ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"root\"]/div/div[3]/div[1]/div[2]/div/h4"))));
+            Thread.sleep(3000);
             return true;
         } catch (Exception e) {
-            // System.out.println("Error while searching for a product: " + e.getMessage());
             return false;
         }
     }
@@ -225,7 +225,8 @@ public class Home {
             }
 
             for (String expected : expectedCartContents) {
-                if (!actualCartContents.contains(expected)) {
+                // To trim as getText() trims cart item title
+                if (!actualCartContents.contains(expected.trim())) {
                     return false;
                 }
             }
