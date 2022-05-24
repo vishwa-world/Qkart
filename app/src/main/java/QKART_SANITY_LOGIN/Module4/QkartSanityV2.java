@@ -674,7 +674,7 @@ public class QkartSanityV2 {
 
         contactUs.click();
 
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+        WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.invisibilityOf(contactUs));
 
         logStatus("End TestCase",
