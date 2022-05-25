@@ -54,6 +54,7 @@ public class Home {
             Thread.sleep(3000);
             return true;
         } catch (Exception e) {
+            System.out.println("Error while searching for a product: " + e.getMessage());
             return false;
         }
     }
