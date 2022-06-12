@@ -123,7 +123,7 @@ public class Home {
             }
             // SLEEP_STMT_12: If product found, wait till the product gets added
             // successfully
-            System.out.println("Unable to find the given product");
+            System.out.println("Unable to find the given product: " + productName);
             return false;
         } catch (Exception e) {
             System.out.println("Exception while performing add to cart: " + e.getMessage());
