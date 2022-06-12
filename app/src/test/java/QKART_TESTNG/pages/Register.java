@@ -1,4 +1,4 @@
-package QKART_SANITY_LOGIN.Module4;
+package QKART_TESTNG.pages;
 
 import java.sql.Timestamp;
 
