@@ -60,7 +60,6 @@ public class Checkout {
     /*
      * Return Boolean denoting the status of selecting an available address
      */
-    // TODO: CRIO_TASK_MODULE_XPATH - M1_3 Update Xpath to fix the error
     public Boolean selectAddress(String addressToSelect) {
         try {
             /*
