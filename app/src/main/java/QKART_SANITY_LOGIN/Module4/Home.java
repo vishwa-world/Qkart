@@ -113,7 +113,7 @@ public class Home {
                     return true;
                 }
             }
-            System.out.println("Unable to find the given product");
+            System.out.println("Unable to find the given product: " + productName);
             return false;
         } catch (Exception e) {
             System.out.println("Exception while performing add to cart: " + e.getMessage());
