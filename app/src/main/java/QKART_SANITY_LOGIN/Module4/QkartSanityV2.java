@@ -72,7 +72,7 @@ public class QkartSanityV2 {
         registration.navigateToRegisterPage();
         status = registration.registerUser("testUser", "abc@123", true);
         if (!status) {
-            logStatus("TestCase 1", "Test Case Pass. User Registration Pass", "FAIL");
+            logStatus("TestCase 1", "Test Case Fail. User Registration Fail", "FAIL");
             logStatus("End TestCase", "Test Case 1: Verify user Registration : ", status ? "PASS" : "FAIL");
 
             // Return False as the test case Fails
