@@ -385,7 +385,7 @@ public class QkartSanityV2 {
             WebDriverWait wait = new WebDriverWait(driver, 30);
             wait.until(ExpectedConditions.urlToBe("https://crio-qkart-frontend-qa.vercel.app/thanks"));
         } catch (TimeoutException e) {
-            System.out.println("Error while logging in: " + e.getMessage());
+            System.out.println("Error while placing order in: " + e.getMessage());
             return false;
         }
 
@@ -561,7 +561,7 @@ public class QkartSanityV2 {
         logStatus("End TestCase",
         "Test Case 9: Verify that product added to cart is available when a new tab is opened",
         status ? "PASS" : "FAIL");
-        takeScreenshot(driver, "StartTestCase", "TestCase09");
+        takeScreenshot(driver, "EndTestCase", "TestCase09");
 
         return status;
     }
@@ -691,7 +691,7 @@ public class QkartSanityV2 {
         logStatus("Start TestCase",
                 "Test Case 12: Ensure that the links on the QKART advertisement are clickable",
                 "DONE");
-        takeScreenshot(driver, "StartTestCase", "TestCase06");
+        takeScreenshot(driver, "StartTestCase", "TestCase12");
 
         Register registration = new Register(driver);
         registration.navigateToRegisterPage();

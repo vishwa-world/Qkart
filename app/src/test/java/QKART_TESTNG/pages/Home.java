@@ -51,9 +51,9 @@ public class Home {
             searchBox.clear();
             searchBox.sendKeys(product);
 
-            WebDriverWait wait = new WebDriverWait(driver,30);
-            wait.until(ExpectedConditions.or(ExpectedConditions.textToBePresentInElementLocated(By.className("css-yg30ev6"), product),
-            ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@id=\"root\"]/div/div[3]/div[1]/div[2]/div/h4"))));
+            WebDriverWait wait = new WebDriverWait(driver, 30);
+            wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(String
+                    .format("//div[@class='MuiCardContent-root css-1qw96cp'][1]/p[contains(text(),'%s')]", product))));
             Thread.sleep(3000);
             return true;
         } catch (Exception e) {
@@ -167,7 +167,8 @@ public class Home {
             int currentQty;
             for (WebElement item : cartContents) {
                 // Find the matching product from the cart items
-                if (productName.contains(item.findElement(By.xpath("//*[@class='MuiBox-root css-1gjj37g']/div[1]")).getText())) {
+                if (productName.contains(
+                        item.findElement(By.xpath("//*[@class='MuiBox-root css-1gjj37g']/div[1]")).getText())) {
                     currentQty = Integer.valueOf(item.findElement(By.className("css-olyig7")).getText());
 
                     // Click on the + or - buttons appropriately to set the correct quantity of the
@@ -176,13 +177,13 @@ public class Home {
                         if (currentQty < quantity) {
                             // increase Qty
                             item.findElements(By.tagName("button")).get(1).click();
-                         
+
                         } else {
                             // decrease Qty
                             item.findElements(By.tagName("button")).get(0).click();
                         }
 
-                        synchronized (driver){
+                        synchronized (driver) {
                             driver.wait(2000);
                         }
 
