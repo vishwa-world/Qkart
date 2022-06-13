@@ -1,30 +1,44 @@
 package QKART_TESTNG;
 
-import org.testng.annotations.*;
-import QKART_TestNG.pages.Home;
-import QKART_TestNG.pages.SearchResult;
+import QKART_TESTNG.pages.Home;
+import QKART_TESTNG.pages.Login;
+import QKART_TESTNG.pages.Register;
+
+import static org.junit.Assert.assertTrue;
 import static org.testng.Assert.*;
-import java.util.List;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.apache.commons.io.FileUtils;
+import org.junit.Test;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.*;
 
 public class QKART_Tests {
 
     static RemoteWebDriver driver;
+    public static String lastGeneratedUserName;
 
     @BeforeSuite
-    public static RemoteWebDriver createDriver() throws MalformedURLException {
+    public static void createDriver() throws MalformedURLException {
         // Launch Browser using Zalenium
         final DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setBrowserName(BrowserType.CHROME);
         driver = new RemoteWebDriver(new URL("http://localhost:8082/wd/hub"), capabilities);
     }
 
-    @Test
     /*
      * Testcase01: Verify the functionality of Login button on the Home page
      */
-    public static Boolean TestCase01(RemoteWebDriver driver) throws InterruptedException {
+    @Test
+    public void TestCase01() throws InterruptedException {
         Boolean status;
         logStatus("Start TestCase", "Test Case 1: Verify User Registration", "DONE");
         takeScreenshot(driver, "StartTestCase", "TestCase1");
@@ -33,7 +47,7 @@ public class QKART_Tests {
         Register registration = new Register(driver);
         registration.navigateToRegisterPage();
         status = registration.registerUser("testUser", "abc@123", true);
-        asserTrue(status, "Test Case Fail. User Registration Fail");
+        assertTrue(status, "Failed to register new user");
 
         // Save the last generated username
         lastGeneratedUserName = registration.lastGeneratedUsername;
@@ -43,7 +57,7 @@ public class QKART_Tests {
         login.navigateToLoginPage();
         status = login.PerformLogin(lastGeneratedUserName, "abc@123");
         logStatus("Test Step", "User Perform Login: ", status ? "PASS" : "FAIL");
-        assertTrue(status, "Test Case 1: Verify user Registration : ");
+        assertTrue(status, "Failed to login with registered user");
 
         // Visit the home page and log out the logged in user
         Home home = new Home(driver);
@@ -51,8 +65,6 @@ public class QKART_Tests {
 
         logStatus("End TestCase", "Test Case 1: Verify user Registration : ", status ? "PASS" : "FAIL");
         takeScreenshot(driver, "EndTestCase", "TestCase1");
-
-        return status;
     }
 
     @AfterSuite
