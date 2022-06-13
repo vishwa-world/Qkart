@@ -37,7 +37,8 @@ run.dependsOn startScript
 test.dependsOn startScript
 
 test {
-    useTestNG()
+    useTestNG() {
+    }
 
     afterSuite { desc, result ->
             if (!desc.parent) {
