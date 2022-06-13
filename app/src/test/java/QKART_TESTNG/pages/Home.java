@@ -209,7 +209,10 @@ public class Home {
      */
     public Boolean verifyCartContents(List<String> expectedCartContents) {
         try {
+            // Get all the cart items as an array of webelements
 
+            // Iterate through expectedCartContents and check if item with matching product
+            // name is present in the cart
 
             WebElement cartParent = driver.findElement(By.className("cart"));
             List<WebElement> cartContents = cartParent.findElements(By.className("css-zgtx0t"));
@@ -221,6 +224,7 @@ public class Home {
             }
 
             for (String expected : expectedCartContents) {
+                // To trim as getText() trims cart item title
                 if (!actualCartContents.contains(expected.trim())) {
                     return false;
                 }
