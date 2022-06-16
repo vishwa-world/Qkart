@@ -50,6 +50,10 @@ public class Login {
                 .pollingEvery(Duration.ofMillis(600)).ignoring(NoSuchElementException.class);
         wait.until(ExpectedConditions.invisibilityOf(login_button));
 
+        synchronized (driver) {
+            driver.wait(2000);
+        }
+        
         return this.VerifyUserLoggedIn(Username);
     }
 

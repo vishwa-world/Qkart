@@ -48,7 +48,7 @@ public class QKART_Tests {
      * Testcase01: Verify a new user can successfully register
      */
      @Test
-     public void TestCase01(@Optional("testUser") String TC1_Username, @Optional("abc@123") String TC1_Password) throws InterruptedException {
+     public void TestCase01() throws InterruptedException {
         Boolean status;
          logStatus("Start TestCase", "Test Case 1: Verify User Registration", "DONE");
          takeScreenshot(driver, "StartTestCase", "TestCase1");
