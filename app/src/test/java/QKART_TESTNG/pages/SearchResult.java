@@ -36,7 +36,7 @@ public class SearchResult {
     public Boolean openSizechart() {
         try {
             // Find the link of size chart in the parentElement and click on it
-            WebElement element = parentElement.findElement(By.tagName("button"));
+             WebElement element = parentElement.findElement(By.tagName("button"));
             element.click();
 
             Thread.sleep(3000);

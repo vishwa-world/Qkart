@@ -86,9 +86,7 @@ public class Home {
     public Boolean isNoResultFound() {
         Boolean status = false;
         try {
-            // Check the presence of "No products found" text in the web page. Assign status
-            // = true if the element is *displayed* else set status = false
-            status = driver.findElementByXPath("//*[@id=\"root\"]/div/div/div[3]/div[1]/div[2]/div/h4").isDisplayed();
+            status = driver.findElementByXPath("//h4[text()=' No products found ']").isDisplayed();
             return status;
         } catch (Exception e) {
             return status;
@@ -119,8 +117,6 @@ public class Home {
                     return true;
                 }
             }
-            // SLEEP_STMT_12: If product found, wait till the product gets added
-            // successfully
             System.out.println("Unable to find the given product");
             return false;
         } catch (Exception e) {
@@ -154,32 +150,20 @@ public class Home {
     public Boolean changeProductQuantityinCart(String productName, int quantity) {
         try {
 
-            // Find the item on the cart with the matching productName
-
-            // Increment or decrement the quantity of the matching product until the current
-            // quantity is reached (Note: Keep a look out when then input quantity is 0,
-            // here we need to remove the item completely from the cart)
-
-            // Find web element corresponding to each of the cart items
             WebElement cartParent = driver.findElement(By.className("cart"));
             List<WebElement> cartContents = cartParent.findElements(By.className("css-zgtx0t"));
 
             int currentQty;
             for (WebElement item : cartContents) {
-                // Find the matching product from the cart items
                 if (productName.contains(
                         item.findElement(By.xpath("//*[@class='MuiBox-root css-1gjj37g']/div[1]")).getText())) {
                     currentQty = Integer.valueOf(item.findElement(By.className("css-olyig7")).getText());
 
-                    // Click on the + or - buttons appropriately to set the correct quantity of the
-                    // product
                     while (currentQty != quantity) {
                         if (currentQty < quantity) {
-                            // increase Qty
                             item.findElements(By.tagName("button")).get(1).click();
 
                         } else {
-                            // decrease Qty
                             item.findElements(By.tagName("button")).get(0).click();
                         }
 
@@ -209,18 +193,13 @@ public class Home {
      */
     public Boolean verifyCartContents(List<String> expectedCartContents) {
         try {
-            // Get all the cart items as an array of webelements
-
-            // Iterate through expectedCartContents and check if item with matching product
-            // name is present in the cart
-
-            WebElement cartParent = driver.findElement(By.className("cart"));
-            List<WebElement> cartContents = cartParent.findElements(By.className("css-zgtx0t"));
-
+            List<WebElement> cartContents = driver.findElementsByXPath(
+                    "//div[@class='MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-3 css-1q5pok1']//div[@class='MuiBox-root css-1gjj37g']/div[not(@class)]");
             ArrayList<String> actualCartContents = new ArrayList<String>() {
+
             };
             for (WebElement cartItem : cartContents) {
-                actualCartContents.add(cartItem.findElement(By.className("css-1gjj37g")).getText().split("\n")[0]);
+                actualCartContents.add(cartItem.getText());
             }
 
             for (String expected : expectedCartContents) {
@@ -229,7 +208,6 @@ public class Home {
                     return false;
                 }
             }
-
             return true;
 
         } catch (Exception e) {

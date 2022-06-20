@@ -46,6 +46,7 @@ public class Checkout {
                     wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(String.format(
                             "//*[@class='MuiTypography-root MuiTypography-body1 css-yg30e6' and text()='%s']",
                             addresString))));
+                    Thread.sleep(2000);
                     return true;
                 }
             }
@@ -66,17 +67,11 @@ public class Checkout {
              * Iterate through all the address boxes to find the address box with matching
              * text, addressToSelect and click on it
              */
-            WebElement parentBox = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div[1]/div/div[1]"));
-            List<WebElement> allBoxes = parentBox.findElements(By.className("not-selected"));
+            WebElement address = driver.findElementByXPath(
+                    String.format("//p[@class = 'MuiTypography-root MuiTypography-body1 css-yg30e6' and text()= '%s']",
+                            addressToSelect));
+            address.click();
 
-            for (WebElement box : allBoxes) {
-                if (box.findElement(By.className("css-yg30e6")).getText().replaceAll(" ", "")
-                        .equals(addressToSelect.replaceAll(" ", ""))) {
-                    box.findElement(By.tagName("input")).click();
-                    return true;
-                }
-            }
-            System.out.println("Unable to find the given address");
             return false;
         } catch (Exception e) {
             System.out.println("Exception Occurred while selecting the given address: " + e.getMessage());
@@ -90,15 +85,9 @@ public class Checkout {
      */
     public Boolean placeOrder() {
         try {
-            // Find the "PLACE ORDER" button and click on it
-            List<WebElement> elements = driver.findElementsByClassName("css-177pwqq");
-            for (WebElement element : elements) {
-                if (element.getText().equals("PLACE ORDER")) {
-                    element.click();
-                    return true;
-                }
-            }
-            return false;
+            WebElement placeOrder = driver.findElementByXPath("//button[text()='PLACE ORDER']");
+            placeOrder.click();
+            return true;
 
         } catch (Exception e) {
             System.out.println("Exception while clicking on PLACE ORDER: " + e.getMessage());
