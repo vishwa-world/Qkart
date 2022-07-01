@@ -39,6 +39,7 @@ test.dependsOn startScript
 
 test {
     useTestNG() {
+        useDefaultListeners = true
     }
 
     afterSuite { desc, result ->
