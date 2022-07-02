@@ -29,6 +29,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import org.testng.annotations.Test;
+
 public class QKART_Tests {
 
     static RemoteWebDriver driver;
@@ -46,8 +47,8 @@ public class QKART_Tests {
     /*
      * Testcase01: Verify a new user can successfully register
      */
-     @Test
-     public void TestCase01() throws InterruptedException {
+         @Test
+         public void TestCase01() throws InterruptedException {
         Boolean status;
          logStatus("Start TestCase", "Test Case 1: Verify User Registration", "DONE");
          takeScreenshot(driver, "StartTestCase", "TestCase1");
@@ -107,3 +108,4 @@ public class QKART_Tests {
         }
     }
 }
+
