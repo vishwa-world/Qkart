@@ -29,6 +29,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import org.testng.annotations.Test;
+
 public class QKART_Tests {
 
     static RemoteWebDriver driver;
@@ -46,9 +47,11 @@ public class QKART_Tests {
     /*
      * Testcase01: Verify a new user can successfully register
      */
-    @Test(description = "Verify registration happens correctly", priority = 1, groups = {"Sanity_test"})
+    @Test(description = "Verify registration happens correctly", priority = 1, groups = { "Sanity_test" }
+    )
     @Parameters({ "TC1_Username", "TC1_Password" })
-    public void TestCase01(@Optional("testUser") String TC1_Username, @Optional("abc@123") String TC1_Password) throws InterruptedException {
+    public void TestCase01(@Optional("testUser") String TC1_Username, @Optional("abc@123") String TC1_Password)
+            throws InterruptedException {
         Boolean status;
 
         // Visit the Registration page and register a new user
@@ -64,7 +67,7 @@ public class QKART_Tests {
         login.navigateToLoginPage();
 
         status = login.PerformLogin(lastGeneratedUserName, TC1_Password);
-     
+
         assertTrue(status, "Failed to login with registered user");
 
         // Visit the home page and log out the logged in user
@@ -75,9 +78,12 @@ public class QKART_Tests {
     /*
      * Verify that an existing user is not allowed to re-register on QKart
      */
-    @Test(description = "Verify re-registering an already registered user fails", priority = 2, groups = {"Sanity_test"})
+    @Test(description = "Verify re-registering an already registered user fails", priority = 2, groups = {
+            "Sanity_test" }
+    )
     @Parameters({ "TC2_Username", "TC2_Password" })
-    public void TestCase02(@Optional("testUser") String TC2_Username, @Optional("abc@123") String TC2_Password) throws InterruptedException {
+    public void TestCase02(@Optional("testUser") String TC2_Username, @Optional("abc@123") String TC2_Password)
+            throws InterruptedException {
         Boolean status;
 
         // Visit the Registration page and register a new user
@@ -102,7 +108,8 @@ public class QKART_Tests {
     /*
      * Verify the functinality of the search text box
      */
-    @Test(description = "Verify the functionality of search text box", priority = 3, groups = {"Sanity_test"})
+    @Test(description = "Verify the functionality of search text box", priority = 3, groups = { "Sanity_test" }
+    )
     @Parameters("TC3_ProductNameToSearchFor")
     public void TestCase03(String TC3_ProductNameToSearchFor) throws InterruptedException {
         boolean status = false;
@@ -147,7 +154,9 @@ public class QKART_Tests {
      * Verify the presence of size chart and check if the size chart content is as
      * expected
      */
-    @Test(description = "Verify the existence of size chart for certain items and validate contents of size chart", priority = 4, groups = {"Regression_Test"})
+    @Test(description = "Verify the existence of size chart for certain items and validate contents of size chart", priority = 4, groups = {
+            "Regression_Test" }
+    )
     @Parameters("TC4_ProductNameToSearchFor")
     public void TestCase04(String TC4_ProductNameToSearchFor) throws InterruptedException {
         // Visit home page
@@ -202,7 +211,9 @@ public class QKART_Tests {
      * Verify the complete flow of checking out and placing order for products is
      * working correctly
      */
-    @Test(description = "Verify that a new user can add multiple products in to the cart and Checkout", priority = 5, groups = {"Sanity_test"})
+    @Test(description = "Verify that a new user can add multiple products in to the cart and Checkout", priority = 5, groups = {
+            "Sanity_test" }
+    )
     @Parameters({ "TC5_ProductNameToSearchFor", "TC5_ProductNameToSearchFor2", "TC5_AddressDetails" })
     public void TestCase05(String TC5_ProductNameToSearchFor, String TC5_ProductNameToSearchFor2,
             String TC5_AddressDetails) throws InterruptedException {
@@ -265,7 +276,9 @@ public class QKART_Tests {
     /*
      * Verify the quantity of items in cart can be updated
      */
-    @Test(description = "Verify that the contents of the cart can be edited", priority = 6, groups = {"Regression_Test"})
+    @Test(description = "Verify that the contents of the cart can be edited", priority = 6, groups = {
+            "Regression_Test" }
+    )
     @Parameters({ "TC6_ProductNameToSearch1", "TC6_ProductNameToSearch2" })
     public void TestCase06(String TC6_ProductNameToSearch1, String TC6_ProductNameToSearch2)
             throws InterruptedException {
@@ -326,7 +339,9 @@ public class QKART_Tests {
     /*
      * Verify that the cart contents are persisted after logout
      */
-    @Test(description = "Verify that the contents made to the cart are saved against the user's login details", priority = 7, groups = {"Regression_Test"})
+    @Test(description = "Verify that the contents made to the cart are saved against the user's login details", priority = 7, groups = {
+            "Regression_Test" }
+    )
     @Parameters("TC7_ListOfProductsToAddToCart")
     public void TestCase07(String TC7_ListOfProductsToAddToCart) throws InterruptedException {
         Boolean status = false;
@@ -369,7 +384,9 @@ public class QKART_Tests {
      * Verify insufficient balance message is shown when order price is more than
      * wallet balance
      */
-    @Test(description = "Verify that insufficient balance error is thrown when the wallet balance is not enough", priority = 8, groups = {"Sanity_test"})
+    @Test(description = "Verify that insufficient balance error is thrown when the wallet balance is not enough", priority = 8, groups = {
+            "Sanity_test" }
+    )
     @Parameters({ "TC8_ProductName", "TC8_Qty" })
     public void TestCase08(String TC8_ProductName, int TC8_Qty) throws InterruptedException {
         Boolean status;
@@ -409,7 +426,8 @@ public class QKART_Tests {
     /*
      * Verify that product added to cart is available when a new tab is opened
      */
-    @Test(description = "Verify that a product added to a cart is available when a new tab is added", priority = 10, dependsOnMethods = { "TestCase10" }, groups = {"Regression_Test"})
+    @Test(description = "Verify that a product added to a cart is available when a new tab is added", priority = 10, dependsOnMethods = {
+            "TestCase10" }, groups = { "Regression_Test" })
     public void TestCase09() throws InterruptedException {
         Boolean status = false;
 
@@ -452,7 +470,8 @@ public class QKART_Tests {
     /*
      * Verify that the Privacy Policy, About Us are displayed correctly
      */
-    @Test(description = "Verify that privacy policy and about us links are working fine", priority = 9, groups = {"Regression_Test"})
+    @Test(description = "Verify that privacy policy and about us links are working fine", priority = 9, groups = {
+            "Regression_Test" })
     public void TestCase10() throws InterruptedException {
         Boolean status = false;
 
@@ -500,7 +519,8 @@ public class QKART_Tests {
     /*
      * Verify that the Contact Us option is working correctly
      */
-    @Test(description = "Verify that the contact us dialog works fine", priority = 11, groups = {"Regression_Test"})
+    @Test(description = "Verify that the contact us dialog works fine", priority = 11, groups = { "Regression_Test" }
+    )
     @Parameters({ "TC11_ContactusUserName", "TC11_ContactUsEmail", "TC11_QueryContent" })
     public void TestCase11(String TC11_ContactusUserName, String TC11_ContactUsEmail, String TC11_QueryContent)
             throws InterruptedException {
@@ -528,7 +548,9 @@ public class QKART_Tests {
     /*
      * Verify that the links on the QKART advertisement are clickable
      */
-    @Test(description = "Ensure that the Advertisement Links on the QKART page are clickable", priority = 12, groups = {"Sanity_test"})
+    @Test(description = "Ensure that the Advertisement Links on the QKART page are clickable", priority = 12, groups = {
+            "Sanity_test" }
+    )
     @Parameters({ "TC12_ProductNameToSearch", "TC12_AddresstoAdd" })
     public void TestCase12(String TC12_ProductNameToSearch, String TC12_AddresstoAdd) throws InterruptedException {
         Boolean status = false;
