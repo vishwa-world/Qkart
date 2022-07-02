@@ -105,7 +105,6 @@ public class QKART_Tests {
     @Test(description = "Verify the functionality of search text box", priority = 3, groups = {"Sanity_test"})
     @Parameters("TC3_ProductNameToSearchFor")
     public void TestCase03(String TC3_ProductNameToSearchFor) throws InterruptedException {
-        takeScreenshot(driver, "StartTestCase", "TestCase3");
         boolean status = false;
 
         // Visit the home page
