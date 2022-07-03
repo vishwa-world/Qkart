@@ -57,6 +57,7 @@ public class QKART_Tests {
         // Visit the Registration page and register a new user
         Register registration = new Register(driver);
         registration.navigateToRegisterPage();
+        status = registration.registerUser(TC1_Username, TC1_Password, true);
         assertTrue(status, "Failed to register new user");
 
         // Save the last generated username
