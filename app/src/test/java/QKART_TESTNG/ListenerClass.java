@@ -30,6 +30,7 @@ public class ListenerClass implements ITestListener {
     }
     public void onStart(ITestContext context) {
         System.out.println("onStart method started");
+    }
     public void onFinish(ITestContext context) {
         System.out.println("onFinish method started");
     }
