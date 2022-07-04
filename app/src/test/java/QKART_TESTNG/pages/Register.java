@@ -40,6 +40,7 @@ public class Register {
             test_data_username = Username;
 
         // Type the generated username in the username field
+        username_txt_box.clear();
         username_txt_box.sendKeys(test_data_username);
 
         // Find the password Text Box
@@ -47,11 +48,13 @@ public class Register {
         String test_data_password = Password;
 
         // Enter the Password value
+        password_txt_box.clear();
         password_txt_box.sendKeys(test_data_password);
 
         WebElement confirm_password_txt_box = this.driver.findElement(By.id("confirmPassword"));
 
         // Enter the Confirm Password Value
+        confirm_password_txt_box.clear();
         confirm_password_txt_box.sendKeys(test_data_password);
 
         // Find the register now button
