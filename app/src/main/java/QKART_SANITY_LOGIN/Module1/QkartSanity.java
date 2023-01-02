@@ -140,7 +140,31 @@ public class QkartSanity {
     public static Boolean TestCase03(RemoteWebDriver driver) throws InterruptedException {
         logStatus("TestCase 3", "Start test case : Verify functionality of search box ", "DONE");
         boolean status;
+        Register registration = new Register(driver);
+        registration.navigateToRegisterPage();
+        status = registration.registerUser("testUser", "abc@123", true);
+        if (!status) {
+            logStatus("TestCase 1", "Test Case Fail. User Registration Fail", "FAIL");
+            logStatus("End TestCase", "Test Case 1: Verify user Registration : ", status ? "PASS" : "FAIL");
 
+            // Return False as the test case Fails
+            return false;
+        } else {
+            logStatus("TestCase 1", "Test Case Pass. User Registration Pass", "PASS");
+        }
+
+        // Save the last generated username
+        lastGeneratedUserName = registration.lastGeneratedUsername;
+
+        // Visit the login page and login with the previuosly registered user
+        Login login = new Login(driver);
+        login.navigateToLoginPage();
+        status = login.PerformLogin(lastGeneratedUserName, "abc@123");
+        logStatus("Test Step", "User Perform Login: ", status ? "PASS" : "FAIL");
+        if (!status) {
+            logStatus("End TestCase", "Test Case 1: Verify user Registration : ", status ? "PASS" : "FAIL");
+            return false;
+        }
         // Visit the home page
         Home homePage = new Home(driver);
         homePage.navigateToHome();
@@ -195,7 +219,8 @@ public class QkartSanity {
             logStatus("TestCase 3", "Test Case Fail. Expected: no results , actual: Results were available", "FAIL");
             return false;
         }
-
+        Home home = new Home(driver);
+        status = home.PerformLogout();
         return true;
     }
 
@@ -206,7 +231,31 @@ public class QkartSanity {
     public static Boolean TestCase04(RemoteWebDriver driver) throws InterruptedException {
         logStatus("TestCase 4", "Start test case : Verify the presence of size Chart", "DONE");
         boolean status = false;
+        Register registration = new Register(driver);
+        registration.navigateToRegisterPage();
+        status = registration.registerUser("testUser", "abc@123", true);
+        if (!status) {
+            logStatus("TestCase 1", "Test Case Fail. User Registration Fail", "FAIL");
+            logStatus("End TestCase", "Test Case 1: Verify user Registration : ", status ? "PASS" : "FAIL");
 
+            // Return False as the test case Fails
+            return false;
+        } else {
+            logStatus("TestCase 1", "Test Case Pass. User Registration Pass", "PASS");
+        }
+
+        // Save the last generated username
+        lastGeneratedUserName = registration.lastGeneratedUsername;
+
+        // Visit the login page and login with the previuosly registered user
+        Login login = new Login(driver);
+        login.navigateToLoginPage();
+        status = login.PerformLogin(lastGeneratedUserName, "abc@123");
+        logStatus("Test Step", "User Perform Login: ", status ? "PASS" : "FAIL");
+        if (!status) {
+            logStatus("End TestCase", "Test Case 1: Verify user Registration : ", status ? "PASS" : "FAIL");
+            return false;
+        }
         // Visit home page
         Home homePage = new Home(driver);
         homePage.navigateToHome();
@@ -258,6 +307,8 @@ public class QkartSanity {
             }
         }
         logStatus("TestCase 4", "End Test Case: Validated Size Chart Details", status ? "PASS" : "FAIL");
+        Home home = new Home(driver);
+        status = home.PerformLogout();
         return status;
     }
 

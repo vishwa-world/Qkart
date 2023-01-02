@@ -178,7 +178,7 @@ public class QkartSanity {
 
         // Search for product
         status = homePage.searchForProduct("Gesundheit");
-        if (status) {
+        if (!status) {
             logStatus("TestCase 3", "Test Case Failure. Invalid keyword returned results", "FAIL");
             return false;
         }
@@ -780,7 +780,7 @@ public class QkartSanity {
 
             System.out.println("");
 
-            // Execute Test Case 2
+            // // Execute Test Case 2
             totalTests += 1;
             status = TestCase02(driver);
             if (status) {
@@ -796,9 +796,9 @@ public class QkartSanity {
                 passedTests += 1;
             }
 
-            System.out.println("");
+            // System.out.println("");
 
-            // Execute Test Case 4
+            // // Execute Test Case 4
             totalTests += 1;
             status = TestCase04(driver);
             if (status) {
@@ -807,7 +807,7 @@ public class QkartSanity {
 
             System.out.println("");
 
-            // Execute Test Case 5
+            // // Execute Test Case 5
             totalTests += 1;
             status = TestCase05(driver);
             if (status) {
@@ -816,7 +816,7 @@ public class QkartSanity {
 
             System.out.println("");
 
-            // Execute Test Case 6
+            // // Execute Test Case 6
             totalTests += 1;
             status = TestCase06(driver);
             if (status) {
@@ -825,7 +825,7 @@ public class QkartSanity {
 
             System.out.println("");
 
-            // Execute Test Case 7
+            // // Execute Test Case 7
             totalTests += 1;
             status = TestCase07(driver);
             if (status) {
@@ -834,7 +834,7 @@ public class QkartSanity {
 
             System.out.println("");
 
-            // Execute Test Case 8
+            // // Execute Test Case 8
             totalTests += 1;
             status = TestCase08(driver);
             if (status) {
