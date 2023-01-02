@@ -63,6 +63,7 @@ public class Register {
         register_now_button.click();
 
 
+        // SLEEP_STMT_06: Wait for new user to get created in the backend
 
         this.lastGeneratedUsername = test_data_username;
 

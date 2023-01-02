@@ -43,6 +43,16 @@ public class QkartSanity {
                 message, status));
     }
 
+    public static void takeScreenshot(WebDriver driver, String screenshotType, String description) {
+        /*
+         * 1. Check if the folder "/screenshots" exists, create if it doesn't
+         * 2. Generate a unique string using the timestamp
+         * 3. Capture screenshot
+         * 4. Save the screenshot inside the "/screenshots" folder using the following
+         * naming convention: screenshot_<Timestamp>_<ScreenshotType>_<Description>.png
+         * eg: screenshot_2022-03-05T06:59:46.015489_StartTestcase_Testcase01.png
+         */
+    }
 
     /*
      * Testcase01: Verify the functionality of Login button on the Home page
@@ -51,7 +61,6 @@ public class QkartSanity {
         Boolean status;
         logStatus("Start TestCase", "Test Case 1: Verify User Registration", "DONE");
 
-        // Visit the Registration page and register a new user
         Register registration = new Register(driver);
         registration.navigateToRegisterPage();
         status = registration.registerUser("testUser", "abc@123", true);
@@ -128,6 +137,7 @@ public class QkartSanity {
         Home homePage = new Home(driver);
         homePage.navigateToHome();
 
+        // SLEEP_STMT_01 : Wait for Page to Load
         Thread.sleep(5000);
 
         // Search for the "yonex" product
@@ -160,6 +170,7 @@ public class QkartSanity {
         }
 
         logStatus("Step Success", "Successfully validated the search results ", "PASS");
+        // SLEEP_STMT_02
         Thread.sleep(2000);
 
         // Search for product
@@ -197,6 +208,7 @@ public class QkartSanity {
         Home homePage = new Home(driver);
         homePage.navigateToHome();
 
+        // SLEEP_STMT_03 : Wait for page to load
         Thread.sleep(5000);
 
         // Search for product and get card content element of search results
@@ -300,6 +312,7 @@ public class QkartSanity {
 
         // Place the order
         checkoutPage.placeOrder();
+        // SLEEP_STMT_04: Wait for place order to succeed and navigate to Thanks page
         Thread.sleep(3000);
 
         // Check if placing order redirected to the Thansk page
@@ -326,23 +339,15 @@ public class QkartSanity {
         Register registration = new Register(driver);
         Login login = new Login(driver);
 
-        // TODO: CRIO_TASK_MODULE_TEST_AUTOMATION - TEST CASE 06: MILESTONE 5
 
-        // TODO: Register a new user
 
-        // TODO: Login using the newly registed user
 
-        // TODO: Add "Xtend Smart Watch" to cart
 
-        // TODO: Add "Yarine Floor Lamp" to cart
 
-        // update watch quantity to 2
         homePage.changeProductQuantityinCart("Xtend Smart Watch", 2);
 
-        // update table lamp quantity to 0
         homePage.changeProductQuantityinCart("Yarine Floor Lamp", 0);
 
-        // update watch quantity again to 1
         homePage.changeProductQuantityinCart("Xtend Smart Watch", 1);
 
         homePage.clickCheckout();
@@ -378,10 +383,7 @@ public class QkartSanity {
         Login login = new Login(driver);
         Home homePage = new Home(driver);
 
-        // TODO: CRIO_TASK_MODULE_TEST_AUTOMATION - TEST CASE 07: MILESTONE 6
-        // TODO: Register a new user
 
-        // TODO: Login using the newly created user
 
         homePage.navigateToHome();
         status = homePage.searchForProduct("Stylecon");
@@ -460,18 +462,36 @@ public class QkartSanity {
         return status;
     }
 
+    public static Boolean TestCase09(RemoteWebDriver driver) throws InterruptedException {
+        Boolean status = false;
+
+        return status;
+    }
+
+    public static Boolean TestCase10(RemoteWebDriver driver) throws InterruptedException {
+        Boolean status = false;
+        return status;
+    }
+
+    public static Boolean TestCase11(RemoteWebDriver driver) throws InterruptedException {
+        Boolean status = false;
+        return status;
+    }
+
+    public static Boolean TestCase12(RemoteWebDriver driver) throws InterruptedException {
+        Boolean status = false;
+        return status;
+    }
 
     public static void main(String[] args) throws InterruptedException, MalformedURLException {
         int totalTests = 0;
         int passedTests = 0;
         Boolean status;
         RemoteWebDriver driver = createDriver();
-        // Maximize and Implicit Wait for things to initailize
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         try {
-            // Execute Test Case 1
             totalTests += 1;
             status = TestCase01(driver);
             if (status) {
@@ -480,7 +500,6 @@ public class QkartSanity {
 
             System.out.println("");
 
-            // Execute Test Case 2
             totalTests += 1;
             status = TestCase02(driver);
             if (status) {
@@ -488,64 +507,28 @@ public class QkartSanity {
             }
 
             System.out.println("");
-            // Execute Test Case 3
-            // totalTests += 1;
-            // status = TestCase03(driver);
-            // if (status) {
-            // passedTests += 1;
-            // }
 
-            // System.out.println("");
 
-            // Execute Test Case 4
-            // totalTests += 1;
-            // status = TestCase04(driver);
-            // if (status) {
-            // passedTests += 1;
-            // }
 
-            // System.out.println("");
 
-            // Execute Test Case 5
-            // totalTests += 1;
-            // status = TestCase05(driver);
-            // if (status) {
-            // passedTests += 1;
-            // }
 
-            // System.out.println("");
 
-            // Execute Test Case 6
-            // totalTests += 1;
-            // status = TestCase06(driver);
-            // if (status) {
-            // passedTests += 1;
-            // }
 
-            // System.out.println("");
 
-            // Execute Test Case 7
-            // totalTests += 1;
-            // status = TestCase07(driver);
-            // if (status) {
-            // passedTests += 1;
-            // }
 
-            // System.out.println("");
 
-            // Execute Test Case 8
-            // totalTests += 1;
-            // status = TestCase08(driver);
-            // if (status) {
-            // passedTests += 1;
-            // }
 
-            // System.out.println("");
+
+
+
+
+
+
+
 
         } catch (Exception e) {
             throw e;
         } finally {
-            // quit Chrome Driver
             driver.quit();
 
             System.out.println(String.format("%s out of %s test cases Passed ", Integer.toString(passedTests),

@@ -23,9 +23,6 @@ public class SearchResult {
      */
     public String getTitleofResult() {
         String titleOfSearchResult = "";
-        // TODO: CRIO_TASK_MODULE_TEST_AUTOMATION - TEST CASE 03: MILESTONE 1
-        // Find the element containing the title (product name) of the search result and
-        // assign the extract title text to titleOfSearchResult
         return titleOfSearchResult;
     }
 
@@ -35,8 +32,6 @@ public class SearchResult {
     public Boolean openSizechart() {
         try {
 
-            // TODO: CRIO_TASK_MODULE_TEST_AUTOMATION - TEST CASE 04: MILESTONE 2
-            // Find the link of size chart in the parentElement and click on it
             return true;
         } catch (Exception e) {
             System.out.println("Exception while opening Size chart: " + e.getMessage());
@@ -52,7 +47,6 @@ public class SearchResult {
             Thread.sleep(2000);
             Actions action = new Actions(driver);
 
-            // Clicking on "ESC" key closes the size chart modal
             action.sendKeys(Keys.ESCAPE);
             action.perform();
             Thread.sleep(2000);
@@ -69,7 +63,6 @@ public class SearchResult {
     public Boolean verifySizeChartExists() {
         Boolean status = false;
         try {
-            // TODO: CRIO_TASK_MODULE_TEST_AUTOMATION - TEST CASE 04: MILESTONE 2
             /*
              * Check if the size chart element exists. If it exists, check if the text of
              * the element is "SIZE CHART". If the text "SIZE CHART" matches for the
@@ -89,7 +82,6 @@ public class SearchResult {
             WebDriver driver) {
         Boolean status = true;
         try {
-            // TODO: CRIO_TASK_MODULE_TEST_AUTOMATION - TEST CASE 04: MILESTONE 2
             /*
              * Locate the table element when the size chart modal is open
              * 
@@ -113,8 +105,6 @@ public class SearchResult {
     public Boolean verifyExistenceofSizeDropdown(WebDriver driver) {
         Boolean status = false;
         try {
-            // TODO: CRIO_TASK_MODULE_TEST_AUTOMATION - TEST CASE 04: MILESTONE 2
-            // If the size dropdown exists and is displayed return true, else return false
             return status;
         } catch (Exception e) {
             return status;

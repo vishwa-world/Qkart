@@ -29,6 +29,7 @@ public class Home {
             WebElement logout_button = driver.findElement(By.className("MuiButton-text"));
             logout_button.click();
 
+            // SLEEP_STMT_10: Wait for Logout to complete
             // Wait for Logout to Complete
             Thread.sleep(3000);
 
@@ -45,9 +46,6 @@ public class Home {
      */
     public Boolean searchForProduct(String product) {
         try {
-            // TODO: CRIO_TASK_MODULE_TEST_AUTOMATION - TEST CASE 03: MILESTONE 1
-            // Clear the contents of the search box and Enter the product name in the search
-            // box
             return true;
         } catch (Exception e) {
             System.out.println("Error while searching for a product: " + e.getMessage());
@@ -62,9 +60,6 @@ public class Home {
         List<WebElement> searchResults = new ArrayList<WebElement>() {
         };
         try {
-            // TODO: CRIO_TASK_MODULE_TEST_AUTOMATION - TEST CASE 03: MILESTONE 1
-            // Find all webelements corresponding to the card content section of each of
-            // search results
             return searchResults;
         } catch (Exception e) {
             System.out.println("There were no search results: " + e.getMessage());
@@ -79,9 +74,6 @@ public class Home {
     public Boolean isNoResultFound() {
         Boolean status = false;
         try {
-            // TODO: CRIO_TASK_MODULE_TEST_AUTOMATION - TEST CASE 03: MILESTONE 1
-            // Check the presence of "No products found" text in the web page. Assign status
-            // = true if the element is *displayed* else set status = false
             return status;
         } catch (Exception e) {
             return status;
@@ -93,7 +85,6 @@ public class Home {
      */
     public Boolean addProductToCart(String productName) {
         try {
-            // TODO: CRIO_TASK_MODULE_TEST_AUTOMATION - TEST CASE 05: MILESTONE 4
             /*
              * Iterate through each product on the page to find the WebElement corresponding
              * to the matching productName
@@ -116,8 +107,6 @@ public class Home {
     public Boolean clickCheckout() {
         Boolean status = false;
         try {
-            // TODO: CRIO_TASK_MODULE_TEST_AUTOMATION - TEST CASE 05: MILESTONE 4
-            // Find and click on the the Checkout button
             return status;
         } catch (Exception e) {
             System.out.println("Exception while clicking on Checkout: " + e.getMessage());
@@ -131,13 +120,8 @@ public class Home {
      */
     public Boolean changeProductQuantityinCart(String productName, int quantity) {
         try {
-            // TODO: CRIO_TASK_MODULE_TEST_AUTOMATION - TEST CASE 06: MILESTONE 5
 
-            // Find the item on the cart with the matching productName
 
-            // Increment or decrement the quantity of the matching product until the current
-            // quantity is reached (Note: Keep a look out when then input quantity is 0,
-            // here we need to remove the item completely from the cart)
 
 
             return false;
@@ -154,12 +138,8 @@ public class Home {
      */
     public Boolean verifyCartContents(List<String> expectedCartContents) {
         try {
-            // TODO: CRIO_TASK_MODULE_TEST_AUTOMATION - TEST CASE 07: MILESTONE 6
 
-            // Get all the cart items as an array of webelements
 
-            // Iterate through expectedCartContents and check if item with matching product
-            // name is present in the cart
 
 
             return true;
