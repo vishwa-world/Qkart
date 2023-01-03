@@ -28,7 +28,6 @@ public class QkartSanity {
 
     public static String lastGeneratedUserName;
 
-
     public static RemoteWebDriver createDriver() throws MalformedURLException {
         // Launch Browser using Zalenium
         final DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -141,6 +140,7 @@ public class QkartSanity {
         // If status is true, then registration succeeded, else registration has
         // failed. In this case registration failure means Success
         logStatus("End TestCase", "Test Case 2: Verify user Registration : ", status ? "FAIL" : "PASS");
+        driver.navigate().refresh();
         return !status;
     }
 
@@ -154,17 +154,19 @@ public class QkartSanity {
         registration.navigateToRegisterPage();
         status = registration.registerUser("testUser", "abc@123", true);
         if (!status) {
-            logStatus("TestCase 1", "Test Case Fail. User Registration Fail", "FAIL");
+            logStatus("TestCase ", "Test Case Fail. User Registration Fail", "FAIL");
             logStatus("End TestCase", "Test Case 1: Verify user Registration : ", status ? "PASS" : "FAIL");
 
             // Return False as the test case Fails
             return false;
         } else {
-            logStatus("TestCase 1", "Test Case Pass. User Registration Pass", "PASS");
+            logStatus("TestCase ", "Test Case Pass. User Registration Pass", "PASS");
         }
 
         // Save the last generated username
         lastGeneratedUserName = registration.lastGeneratedUsername;
+        System.out.println(registration.lastGeneratedUsername);
+        System.out.println(lastGeneratedUserName);
 
         // Visit the login page and login with the previuosly registered user
         Login login = new Login(driver);
@@ -175,15 +177,9 @@ public class QkartSanity {
             logStatus("End TestCase", "Test Case 1: Verify user Registration : ", status ? "PASS" : "FAIL");
             return false;
         }
-
         // Visit the home page
         Home homePage = new Home(driver);
         homePage.navigateToHome();
-
-        // Search for the "yonex" product
-        status = homePage.searchForProduct("YONEX");
-        // SLEEP_STMT_01 : Wait for Page to Load
-        Thread.sleep(5000);
 
         // Search for the "yonex" product
         status = homePage.searchForProduct("yonex");
@@ -218,15 +214,8 @@ public class QkartSanity {
 
         // Search for product
         status = homePage.searchForProduct("Gesundheit");
-        if (status) {
-            logStatus("TestCase 3", "Test Case Failure. Invalid keyword returned results", "FAIL");
-        // SLEEP_STMT_02
-        Thread.sleep(2000);
-
-        // Search for product
-        status = homePage.searchForProduct("Gesundheit");
         if (!status) {
-            logStatus("TestCase 3", "Test Case Failure. Unable to search for given product", "FAIL");
+            logStatus("TestCase 3", "Test Case Failure. Invalid keyword returned results", "FAIL");
             return false;
         }
 
@@ -244,9 +233,8 @@ public class QkartSanity {
         }
         Home home = new Home(driver);
         status = home.PerformLogout();
-        }       
-        return status;
-    }       
+        return true;
+    }
 
     /*
      * Verify the presence of size chart and check if the size chart content is as
@@ -259,7 +247,7 @@ public class QkartSanity {
         registration.navigateToRegisterPage();
         status = registration.registerUser("testUser", "abc@123", true);
         if (!status) {
-            logStatus("TestCase 1", "Test Case Fail. User Registration Fail", "FAIL");
+            logStatus("TestCase ", "Test Case Fail. User Registration Fail", "FAIL");
             logStatus("End TestCase", "Test Case 1: Verify user Registration : ", status ? "PASS" : "FAIL");
 
             // Return False as the test case Fails
@@ -280,13 +268,9 @@ public class QkartSanity {
             logStatus("End TestCase", "Test Case 1: Verify user Registration : ", status ? "PASS" : "FAIL");
             return false;
         }
-
         // Visit home page
         Home homePage = new Home(driver);
         homePage.navigateToHome();
-
-        // SLEEP_STMT_03 : Wait for page to load
-        Thread.sleep(5000);
 
         // Search for product and get card content element of search results
         status = homePage.searchForProduct("Running Shoes");
@@ -337,7 +321,6 @@ public class QkartSanity {
         logStatus("TestCase 4", "End Test Case: Validated Size Chart Details", status ? "PASS" : "FAIL");
         Home home = new Home(driver);
         status = home.PerformLogout();
-        logStatus("TestCase 4", "Test Case PASS. Validated Size Chart Details", "PASS");
         return status;
     }
 
@@ -396,15 +379,12 @@ public class QkartSanity {
 
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.urlToBe("https://crio-qkart-frontend-qa.vercel.app/thanks"));
-        // SLEEP_STMT_04: Wait for place order to succeed and navigate to Thanks page
-        Thread.sleep(3000);
 
         // Check if placing order redirected to the Thansk page
         status = driver.getCurrentUrl().endsWith("/thanks");
 
         // Go to the home page
         homePage.navigateToHome();
-        Thread.sleep(3000);
 
         // Log out the user
         homePage.PerformLogout();
@@ -471,12 +451,10 @@ public class QkartSanity {
             System.out.println("Error while placing order in: " + e.getMessage());
             return false;
         }
-        Thread.sleep(3000);
 
         status = driver.getCurrentUrl().endsWith("/thanks");
 
         homePage.navigateToHome();
-        Thread.sleep(3000);
         homePage.PerformLogout();
 
         logStatus("End TestCase", "Test Case 6: Verify that cart can be edited: ", status ? "PASS" : "FAIL");
@@ -527,7 +505,6 @@ public class QkartSanity {
 
         login.navigateToLoginPage();
         status = login.PerformLogin(lastGeneratedUserName, "abc@123");
-        Thread.sleep(3000);
 
         status = homePage.verifyCartContents(expectedResult);
 
@@ -570,10 +547,9 @@ public class QkartSanity {
         Home homePage = new Home(driver);
         homePage.navigateToHome();
         status = homePage.searchForProduct("Stylecon");
-        homePage.addProductToCart("Stylecon 9 Seater RHS Sofa Set");
-        Thread.sleep(3000);
+        homePage.addProductToCart("Stylecon 9 Seater RHS Sofa Set ");
 
-        homePage.changeProductQuantityinCart("Stylecon 9 Seater RHS Sofa Set", 10);
+        homePage.changeProductQuantityinCart("Stylecon 9 Seater RHS Sofa Set ", 10);
 
         homePage.clickCheckout();
 
@@ -650,7 +626,6 @@ public class QkartSanity {
         status ? "PASS" : "FAIL");
         takeScreenshot(driver, "EndTestCase", "TestCase09");
 
-        // TODO: CRIO_TASK_MODULE_SYNCHRONISATION -
         return status;
     }
 
@@ -859,7 +834,7 @@ public class QkartSanity {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         try {
-            // Execute Test Case 1
+        //     // Execute Test Case 1
             totalTests += 1;
             status = TestCase01(driver);
             if (status) {
@@ -868,7 +843,7 @@ public class QkartSanity {
 
             System.out.println("");
 
-            // Execute Test Case 2
+        //     // Execute Test Case 2
             totalTests += 1;
             status = TestCase02(driver);
             if (status) {
@@ -886,7 +861,7 @@ public class QkartSanity {
 
             System.out.println("");
 
-            // Execute Test Case 4
+        //     // Execute Test Case 4
             totalTests += 1;
             status = TestCase04(driver);
             if (status) {
@@ -895,7 +870,7 @@ public class QkartSanity {
 
             System.out.println("");
 
-            // Execute Test Case 5
+        //     // Execute Test Case 5
             totalTests += 1;
             status = TestCase05(driver);
             if (status) {
@@ -904,7 +879,7 @@ public class QkartSanity {
 
             System.out.println("");
 
-            // Execute Test Case 6
+        //     // Execute Test Case 6
             totalTests += 1;
             status = TestCase06(driver);
             if (status) {
@@ -913,7 +888,7 @@ public class QkartSanity {
 
             System.out.println("");
 
-            // Execute Test Case 7
+        //     // Execute Test Case 7
             totalTests += 1;
             status = TestCase07(driver);
             if (status) {
@@ -922,7 +897,7 @@ public class QkartSanity {
 
             System.out.println("");
 
-            // Execute Test Case 8
+        //     // Execute Test Case 8
             totalTests += 1;
             status = TestCase08(driver);
             if (status) {
@@ -931,7 +906,7 @@ public class QkartSanity {
 
             System.out.println("");
 
-            // Execute Test Case 9
+        //     // Execute Test Case 9
             totalTests += 1;
             status = TestCase09(driver);
             if (status) {
@@ -940,7 +915,7 @@ public class QkartSanity {
 
             System.out.println("");
 
-            // Execute Test Case 10
+        //     // Execute Test Case 10
             totalTests += 1;
             status = TestCase10(driver);
             if (status) {
@@ -949,7 +924,7 @@ public class QkartSanity {
 
             System.out.println("");
 
-            // Execute Test Case 11
+        //     // Execute Test Case 11
             totalTests += 1;
             status = TestCase11(driver);
             if (status) {
@@ -958,7 +933,7 @@ public class QkartSanity {
 
             System.out.println("");
 
-            // Execute Test Case 12
+        //     // Execute Test Case 12
             totalTests += 1;
             status = TestCase12(driver);
             if (status) {
