@@ -28,7 +28,6 @@ public class QkartSanity {
 
     public static String lastGeneratedUserName;
 
-
     public static RemoteWebDriver createDriver() throws MalformedURLException {
         // Launch Browser using Zalenium
         final DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -59,15 +58,6 @@ public class QkartSanity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        // TODO: CRIO_TASK_MODULE_SYNCHRONISATION - Implement method using below steps
-        /*
-         * 1. Check if the folder "/screenshots" exists, create if it doesn't
-         * 2. Generate a unique string using the timestamp
-         * 3. Capture screenshot
-         * 4. Save the screenshot inside the "/screenshots" folder using the following
-         * naming convention: screenshot_<Timestamp>_<ScreenshotType>_<Description>.png
-         * eg: screenshot_2022-03-05T06:59:46.015489_StartTestcase_Testcase01.png
-         */
     }
 
     /*
@@ -175,18 +165,12 @@ public class QkartSanity {
             logStatus("End TestCase", "Test Case 1: Verify user Registration : ", status ? "PASS" : "FAIL");
             return false;
         }
-
         // Visit the home page
         Home homePage = new Home(driver);
         homePage.navigateToHome();
 
         // Search for the "yonex" product
         status = homePage.searchForProduct("YONEX");
-        // SLEEP_STMT_01 : Wait for Page to Load
-        Thread.sleep(5000);
-
-        // Search for the "yonex" product
-        status = homePage.searchForProduct("yonex");
         if (!status) {
             logStatus("TestCase 3", "Test Case Failure. Unable to search for given product", "FAIL");
             return false;
@@ -220,13 +204,6 @@ public class QkartSanity {
         status = homePage.searchForProduct("Gesundheit");
         if (status) {
             logStatus("TestCase 3", "Test Case Failure. Invalid keyword returned results", "FAIL");
-        // SLEEP_STMT_02
-        Thread.sleep(2000);
-
-        // Search for product
-        status = homePage.searchForProduct("Gesundheit");
-        if (!status) {
-            logStatus("TestCase 3", "Test Case Failure. Unable to search for given product", "FAIL");
             return false;
         }
 
@@ -244,9 +221,8 @@ public class QkartSanity {
         }
         Home home = new Home(driver);
         status = home.PerformLogout();
-        }       
-        return status;
-    }       
+        return true;
+    }
 
     /*
      * Verify the presence of size chart and check if the size chart content is as
@@ -280,13 +256,9 @@ public class QkartSanity {
             logStatus("End TestCase", "Test Case 1: Verify user Registration : ", status ? "PASS" : "FAIL");
             return false;
         }
-
         // Visit home page
         Home homePage = new Home(driver);
         homePage.navigateToHome();
-
-        // SLEEP_STMT_03 : Wait for page to load
-        Thread.sleep(5000);
 
         // Search for product and get card content element of search results
         status = homePage.searchForProduct("Running Shoes");
@@ -337,7 +309,6 @@ public class QkartSanity {
         logStatus("TestCase 4", "End Test Case: Validated Size Chart Details", status ? "PASS" : "FAIL");
         Home home = new Home(driver);
         status = home.PerformLogout();
-        logStatus("TestCase 4", "Test Case PASS. Validated Size Chart Details", "PASS");
         return status;
     }
 
@@ -396,15 +367,12 @@ public class QkartSanity {
 
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.urlToBe("https://crio-qkart-frontend-qa.vercel.app/thanks"));
-        // SLEEP_STMT_04: Wait for place order to succeed and navigate to Thanks page
-        Thread.sleep(3000);
 
         // Check if placing order redirected to the Thansk page
         status = driver.getCurrentUrl().endsWith("/thanks");
 
         // Go to the home page
         homePage.navigateToHome();
-        Thread.sleep(3000);
 
         // Log out the user
         homePage.PerformLogout();
@@ -471,12 +439,10 @@ public class QkartSanity {
             System.out.println("Error while placing order in: " + e.getMessage());
             return false;
         }
-        Thread.sleep(3000);
 
         status = driver.getCurrentUrl().endsWith("/thanks");
 
         homePage.navigateToHome();
-        Thread.sleep(3000);
         homePage.PerformLogout();
 
         logStatus("End TestCase", "Test Case 6: Verify that cart can be edited: ", status ? "PASS" : "FAIL");
@@ -527,7 +493,6 @@ public class QkartSanity {
 
         login.navigateToLoginPage();
         status = login.PerformLogin(lastGeneratedUserName, "abc@123");
-        Thread.sleep(3000);
 
         status = homePage.verifyCartContents(expectedResult);
 
@@ -570,10 +535,9 @@ public class QkartSanity {
         Home homePage = new Home(driver);
         homePage.navigateToHome();
         status = homePage.searchForProduct("Stylecon");
-        homePage.addProductToCart("Stylecon 9 Seater RHS Sofa Set");
-        Thread.sleep(3000);
+        homePage.addProductToCart("Stylecon 9 Seater RHS Sofa Set ");
 
-        homePage.changeProductQuantityinCart("Stylecon 9 Seater RHS Sofa Set", 10);
+        homePage.changeProductQuantityinCart("Stylecon 9 Seater RHS Sofa Set ", 10);
 
         homePage.clickCheckout();
 
@@ -650,7 +614,6 @@ public class QkartSanity {
         status ? "PASS" : "FAIL");
         takeScreenshot(driver, "EndTestCase", "TestCase09");
 
-        // TODO: CRIO_TASK_MODULE_SYNCHRONISATION -
         return status;
     }
 

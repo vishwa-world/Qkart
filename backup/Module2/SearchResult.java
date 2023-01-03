@@ -55,7 +55,6 @@ public class SearchResult {
                 driver.wait(2000);
             }
             
-            Thread.sleep(2000);
             Actions action = new Actions(driver);
 
             action.sendKeys(Keys.ESCAPE);
@@ -64,7 +63,6 @@ public class SearchResult {
             WebDriverWait wait = new WebDriverWait(driver, 30);
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("MuiDialog-paperScrollPaper")));
 
-            Thread.sleep(2000);
             return true;
         } catch (Exception e) {
             System.out.println("Exception while closing the size chart: " + e.getMessage());

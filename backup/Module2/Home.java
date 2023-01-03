@@ -31,9 +31,6 @@ public class Home {
 
             WebDriverWait wait = new WebDriverWait(driver, 30);
             wait.until(ExpectedConditions.invisibilityOfElementWithText(By.className("css-1urhf6j"), "Logout"));
-            // SLEEP_STMT_10: Wait for Logout to complete
-            // Wait for Logout to Complete
-            Thread.sleep(3000);
 
             return true;
         } catch (Exception e) {
@@ -182,7 +179,7 @@ public class Home {
         } catch (Exception e) {
             if (quantity == 0)
                 return true;
-            System.out.println("exception occurred when updating cart: " + e.getMessage());
+            System.out.println(("exception occurred when updating cart"));
             return false;
         }
     }
@@ -208,7 +205,6 @@ public class Home {
                     return false;
                 }
             }
-
 
             return true;
 
